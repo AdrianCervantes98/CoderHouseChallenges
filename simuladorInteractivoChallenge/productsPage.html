@@ -4,9 +4,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games on sale</title>
+    <script src="js/login_script.js"></script>
 </head>
 <body>
-    <h1>You are now authenticated!</h1>
-    <p>This is where I will create a products page and create a shopping cart.</p>
+    <h1>Click on the buttons to interact with the car</h1>
+    <div class="row">
+        <input type = "button" onclick = "addToCart()" value = "Add Item">
+        <input type = "button" onclick = "clearCart()" value = "Clear Cart">
+        <input type = "button" onclick = "showCart()" value = "Show Cart">
+    </div>
 </body>
 </html>
