@@ -8,10 +8,17 @@
 </head>
 <body>
     <h1>Click on the buttons to interact with the car</h1>
+    <h3>Products in car:</h3>
+    <div id="products_list">
+        <p>The car is empty. Please add products to show them here.</p>
+    </div>
     <div class="row">
+        <label>Product Name:</label>
+        <input id="product_name" name="product_name" type="text">
+        <label>Product Quantity:</label>
+        <input id="product_qty" name="product_qty" type="text">
         <input type = "button" onclick = "addToCart()" value = "Add Item">
         <input type = "button" onclick = "clearCart()" value = "Clear Cart">
-        <input type = "button" onclick = "showCart()" value = "Show Cart">
     </div>
 </body>
 </html>

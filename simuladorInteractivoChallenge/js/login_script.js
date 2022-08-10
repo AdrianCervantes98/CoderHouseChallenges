@@ -1,27 +1,28 @@
-var shoppingCart = [];
+const shoppingCart = [];
+
+class Product {
+    constructor(name, qty) {
+      this.name = name;
+      this.qty = qty;
+    }
+}
 
 function loginFunction() {
     //User info for login purposes
     const username = 'adrian.cervantes';
     const pw = 'password';
-    let authenticated = false;
     
-    while(!authenticated) {
-        //Ask for user and pw until both match with the username and pw vars, and then authenticate user
-        let inputUser = prompt('Please enter your username');
-        let inputPw = prompt('Please enter your password');
+    //Ask for user and pw until both match with the username and pw vars, and then authenticate user
+    const inputUser = document.getElementById('user_email').value;
+    const inputPw = document.getElementById('user_password').value;
     
-        let loginResult = login(username, pw, inputUser, inputPw);
-        if(loginResult) {
-            authenticated = true;
-        } else {
-            alert('Invalid username or password. Try again.')
-        }
+    const loginResult = login(username, pw, inputUser, inputPw);
+    if(loginResult) {
+        alert(`Welcome ${username}!`);
+        window.location.href= 'productsPage.html';
+    } else {
+        alert('Invalid username or password. Try again.')
     }
-    
-    alert(`Welcome ${username}!`);
-    
-    window.location.href= 'productsPage.html';
 }
 
 
@@ -34,42 +35,41 @@ function login(user, password, inputUser, inputPassword) {
 }
 
 function addToCart() {
-    let inputProductName = prompt('Please enter the product name');
-    let inputQty = parseInt(prompt('Please input the product quantity'));
-    let newItem = {
-        name: inputProductName,
-        qty: inputQty
-    };
-    if(inputQty < 1 || isNaN(inputQty)) {
+    const inputProductName = document.getElementById('product_name').value;
+    const inputQty = parseInt(document.getElementById('product_qty').value);
+    const newItem = new Product(inputProductName, inputQty);
+    if(inputProductName.length == 0 || inputProductName == null || inputProductName.trim().length == 0) {
+        alert('Product name cannot be empty');
+    } else if(inputQty < 1 || isNaN(inputQty)) {
         alert('Quantity is less than 1 or not a number');
     } else {
         let flag = false;
         if(shoppingCart.length > 0) {
-            for(let i = 0; i < shoppingCart.length; i++) {
-                if(shoppingCart[i].name == inputProductName) {
-                    flag = true;
-                    shoppingCart[i].qty += inputQty;
-                }
+            const found = shoppingCart.findIndex(item => item.name == inputProductName);
+            if(found != -1) {
+                flag = true;
+                shoppingCart[found].qty += inputQty;
             }
         }
         
         if(!flag) {
             shoppingCart.push(newItem);
         }
+
+        const products_list = document.getElementById('products_list');
+        products_list.innerHTML = '';
+        for (const p of shoppingCart) {
+            const newLine = document.createElement('p');
+            newLine.innerText = `Product name: ${p.name}, Quantity: ${p.qty}`;
+            products_list.append(newLine);
+        }
     }
 }
 
 function clearCart() {
     shoppingCart.length = 0;
-}
-
-function showCart() {
-    if(shoppingCart.length > 0) {
-        alert(JSON.stringify(shoppingCart));
-    } else {
-        alert('Empty cart.')
-    }
-    
+    const products_list = document.getElementById('products_list');
+    products_list.innerHTML = '<p>The car is empty. Please add products to show them here.</p>';
 }
 
 
