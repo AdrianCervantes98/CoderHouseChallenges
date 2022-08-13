@@ -4,21 +4,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games on sale</title>
-    <script src="js/login_script.js"></script>
+    <script src="js/login_script.js" defer></script>
 </head>
 <body>
     <h1>Click on the buttons to interact with the car</h1>
+    <h3 id="car_error"></h3>
     <h3>Products in car:</h3>
     <div id="products_list">
         <p>The car is empty. Please add products to show them here.</p>
     </div>
     <div class="row">
-        <label>Product Name:</label>
-        <input id="product_name" name="product_name" type="text">
-        <label>Product Quantity:</label>
-        <input id="product_qty" name="product_qty" type="text">
-        <input type = "button" onclick = "addToCart()" value = "Add Item">
-        <input type = "button" onclick = "clearCart()" value = "Clear Cart">
+        <form>
+            <label>Product Name:</label>
+            <input id="product_name" name="product_name" type="text">
+            <label>Product Quantity:</label>
+            <input id="product_qty" name="product_qty" type="text">
+            <input type = "button" onclick = "addToCart()" value = "Add Item">
+            <input type = "button" onclick = "clearCart()" value = "Clear Cart">
+        </form>
     </div>
 </body>
 </html>

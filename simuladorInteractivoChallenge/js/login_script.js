@@ -18,31 +18,32 @@ function loginFunction() {
     
     const loginResult = login(username, pw, inputUser, inputPw);
     if(loginResult) {
-        alert(`Welcome ${username}!`);
         window.location.href= 'productsPage.html';
     } else {
-        alert('Invalid username or password. Try again.')
+        const loginError = document.getElementById('login_error');  
+        loginError.innerText = 'Invalid username or password. Try again.';
+        loginError.style.color = 'red';
     }
 }
 
 
 function login(user, password, inputUser, inputPassword) {
-    if(user == inputUser && password == inputPassword) {
-        return true;
-    } else {
-        return false;
-    }
+    return user == inputUser && password == inputPassword;
 }
 
 function addToCart() {
     const inputProductName = document.getElementById('product_name').value;
     const inputQty = parseInt(document.getElementById('product_qty').value);
     const newItem = new Product(inputProductName, inputQty);
-    if(inputProductName.length == 0 || inputProductName == null || inputProductName.trim().length == 0) {
-        alert('Product name cannot be empty');
+    const carError = document.getElementById('car_error');
+    if(inputProductName.trim().length == 0) {
+        carError.innerText = 'Product name cannot be empty';
+        carError.style.color = 'red';
     } else if(inputQty < 1 || isNaN(inputQty)) {
-        alert('Quantity is less than 1 or not a number');
+        carError.innerText = 'Quantity is less than 1 or not a number';
+        carError.style.color = 'red';
     } else {
+        carError.innerText = '';
         let flag = false;
         if(shoppingCart.length > 0) {
             const found = shoppingCart.findIndex(item => item.name == inputProductName);
