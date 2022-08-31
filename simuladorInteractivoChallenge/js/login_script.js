@@ -15,10 +15,22 @@ function loginFunction() {
     if (loginResult) {
       window.location.href = "productsPage.html";
     } else {
-      const loginError = document.getElementById("login_error");
-      loginError.innerText = "Invalid username or password. Try again.";
-      loginError.style.color = "red";
+      Toastify({
+        text: "Invalid username or password. Try again.",
+        duration: 3000,
+        style: {
+          background: "red",
+        },
+        }).showToast();
     }
+  } else {
+    Toastify({
+      text: "Username or Password fields cannot be empty.",
+      duration: 3000,
+      style: {
+        background: "red",
+      },
+      }).showToast();
   }
 }
 

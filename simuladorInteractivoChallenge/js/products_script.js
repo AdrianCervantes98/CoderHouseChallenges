@@ -23,15 +23,23 @@ function addToCart() {
   const inputProductName = document.getElementById("product_name").value;
   const inputQty = parseInt(document.getElementById("product_qty").value);
   const newItem = new Product(inputProductName, inputQty);
-  const carError = document.getElementById("car_error");
   if (inputProductName.trim().length == 0) {
-    carError.innerText = "Product name cannot be empty";
-    carError.style.color = "red";
+    Toastify({
+      text: "Product name cannot be empty.",
+      duration: 3000,
+      style: {
+        background: "red",
+      },
+      }).showToast();
   } else if (inputQty < 1 || isNaN(inputQty)) {
-    carError.innerText = "Quantity is less than 1 or not a number";
-    carError.style.color = "red";
+    Toastify({
+      text: "Quantity is less than 1 or not a number.",
+      duration: 3000,
+      style: {
+        background: "red",
+      },
+      }).showToast();
   } else {
-    carError.innerText = "";
     let flag = false;
     if (shoppingCart.length > 0) {
       const found = shoppingCart.findIndex(
