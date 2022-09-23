@@ -4,25 +4,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games on sale</title>
-    <script src="js/products_script.js" defer></script>
+    <link rel="stylesheet" href="css/productsstyle.css" />
+    <script src="js/products_script.js" defer type="module"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
-    <h1>Click on the buttons to interact with the car</h1>
-    <h3>Products in car:</h3>
-    <div id="products_list">
-        <p>The car is empty. Please add products to show them here.</p>
-    </div>
-    <div class="row">
-        <form>
-            <label>Product Name:</label>
-            <input id="product_name" name="product_name" type="text">
-            <label>Product Quantity:</label>
-            <input id="product_qty" name="product_qty" type="text">
-            <input id="add_item" type = "button" value = "Add Item">
-            <input id="clear_cart" type = "button" value = "Clear Cart">
-        </form>
-    </div>
+    <h1>Browse our available games</h1>
+    <table id="products_table">
+    </table>
+    <h3><a href="cartPage.html">Go to cart</a></h3>
 </body>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </html>

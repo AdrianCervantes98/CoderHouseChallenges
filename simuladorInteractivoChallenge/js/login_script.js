@@ -1,18 +1,16 @@
 const loginButton = document.getElementById("login_button");
 loginButton.addEventListener('click', loginFunction);
 
-function loginFunction() {
-  //User info for login purposes
-  const username = "adrian.cervantes";
-  const pw = "password";
+const users = JSON.parse(localStorage.getItem("users")) || [];
 
+function loginFunction() {
   //Ask for user and pw until both match with the username and pw vars, and then authenticate user
   const inputUser = document.getElementById("user_email").value;
   const inputPw = document.getElementById("user_password").value;
 
   if (inputUser != '' && inputPw != '') {
-    const loginResult = login(username, pw, inputUser, inputPw);
-    if (loginResult) {
+    const found = users.findIndex((user) => user.name == inputUser && user.pw == inputPw);
+    if (found != -1) {
       window.location.href = "productsPage.html";
     } else {
       Toastify({
@@ -34,8 +32,5 @@ function loginFunction() {
   }
 }
 
-function login(user, password, inputUser, inputPassword) {
-  return user == inputUser && password == inputPassword;
-}
 
 

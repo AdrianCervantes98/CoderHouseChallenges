@@ -1,0 +1,36 @@
+@font-face {
+    font-family: Mellow;
+    src: url("Mellow.otf");
+}
+
+body {
+    background-color: seashell;
+}
+
+h1 {
+    font-family: Mellow;
+    text-align: center;
+}
+
+h3 {
+    font-family: Mellow;
+    text-align: center;
+}
+
+.row {
+    text-align: center;
+    font-family: Mellow;
+}
+
+table {
+    font-family: Mellow;
+    text-align: center;
+    border-collapse: separate; 
+    border-spacing: 20px;
+}
+
+td {
+    width: 300px;
+}
+
+
